@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Bazaar_Theme" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">@color/B_dark</item>
+        <item name="colorPrimaryVariant">@color/background_dark</item>
+        <item name="backgroundColor">@color/B_white</item>
+        <item name="android:windowBackground">@color/B_dark</item>
+        <item name="colorButtonNormal">@color/B_dark</item>
+        <item name="android:textColor">@color/B_white</item>
+    </style>
+</resources>
