@@ -22,7 +22,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 
 
 
-
+/*
+List fragment is created for the recycleview to populate
+ */
 class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.OnItemLongClickListener {
     lateinit var listViewModel: ListViewModel
     private lateinit var recycler_view: RecyclerView

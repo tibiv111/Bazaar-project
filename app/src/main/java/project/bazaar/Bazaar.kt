@@ -6,6 +6,6 @@ import project.bazaar.utils.SessionManager
 
 class Bazaar: Application(){
     companion object{
-        var token: String =""
+        var token: String ="token"
     }
 }

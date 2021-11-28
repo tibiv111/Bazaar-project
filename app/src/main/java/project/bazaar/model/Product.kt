@@ -2,6 +2,10 @@ package project.bazaar.model
 
 import com.squareup.moshi.JsonClass
 
+/*
+Data in json format for the REST api
+ */
+
 @JsonClass(generateAdapter = true)
 data class Image(val _id: String, val image_id: String, val image_name: String, val image_path: String)
 

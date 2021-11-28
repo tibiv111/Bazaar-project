@@ -1,9 +1,7 @@
 package project.bazaar.api
 
 
-import project.bazaar.model.LoginRequest
-import project.bazaar.model.LoginResponse
-import project.bazaar.model.ProductResponse
+import project.bazaar.model.*
 import project.bazaar.utils.Constants
 import retrofit2.Response
 import retrofit2.http.*
@@ -14,4 +12,7 @@ interface MarketApi {
 
     @GET(Constants.GET_PRODUCT_URL)
     suspend fun getProducts(@Header("token") token: String): ProductResponse
+
+    @POST(Constants.REGISTER_URL)
+    suspend fun register(@Body request: RegisterRequest) : RegisterResponse
 }

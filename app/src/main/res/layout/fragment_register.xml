@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.RegisterFragment">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="149dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/ic_bazaar_logo_coloured"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        android:contentDescription="@string/logo_of_application" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutInside"
+        android:layout_width="359dp"
+        android:layout_height="523dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/B_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/already_have_account_constant"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/loginClickable"
+            app:layout_constraintStart_toStartOf="@+id/guideline100"
+            app:layout_constraintTop_toBottomOf="@+id/button_register_fragment" />
+
+        <TextView
+            android:id="@+id/loginClickable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="40dp"
+            android:clickable="true"
+            android:onClick="logInClickableFunction"
+            android:text="@string/log_in"
+            android:textColor="@color/turqoise"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guideline111"
+            app:layout_constraintTop_toBottomOf="@+id/button_register_fragment" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_register_fragment"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="283dp"
+            android:layout_height="50dp"
+
+            android:backgroundTint="@color/turqoise"
+            android:text="Register"
+
+
+            android:textColor="@color/B_dark"
+            app:layout_constraintEnd_toStartOf="@+id/guideline111"
+            app:layout_constraintStart_toStartOf="@+id/guideline100"
+            app:layout_constraintTop_toBottomOf="@+id/phone_number_hint"
+            app:rippleColor="@color/B_dark" />
+
+        <TextView
+            android:id="@+id/phone_number_hint"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:text="@string/passworderrortext"
+            android:textColor="@color/from_error_orange"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline111"
+            app:layout_constraintStart_toStartOf="@+id/phone_number_register_fragment"
+            app:layout_constraintTop_toBottomOf="@+id/phone_number_register_fragment" />
+
+        <EditText
+            android:id="@+id/phone_number_register_fragment"
+            android:layout_width="283dp"
+            android:layout_height="58dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:paddingStart="15dp"
+            android:textColor="@color/B_white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline111"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/email_hint_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/email_hint_edittext" />
+
+        <TextView
+            android:id="@+id/email_hint_edittext"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:text="@string/email_hint_edittext"
+            android:textColor="@color/from_error_orange"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline55"
+            app:layout_constraintStart_toStartOf="@+id/edittext_email_data"
+            app:layout_constraintTop_toBottomOf="@+id/edittext_email_data" />
+
+        <EditText
+            android:id="@+id/edittext_email_data"
+            android:layout_width="283dp"
+            android:layout_height="58dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:hint="@string/email_hint_edittext_constant"
+            android:inputType="textEmailAddress"
+            android:paddingStart="15dp"
+            android:textColor="@color/B_white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline55"
+            app:layout_constraintEnd_toStartOf="@+id/guideline111"
+            app:layout_constraintStart_toStartOf="@+id/password_hint_textview"
+            app:layout_constraintTop_toBottomOf="@+id/password_hint_textview"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/username_hint_textview"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:text="@string/firstname_hint_edittext"
+            android:textColor="@color/from_error_orange"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/username_data_edittext_register_fragment"
+            app:layout_constraintTop_toBottomOf="@+id/username_data_edittext_register_fragment" />
+
+        <TextView
+            android:id="@+id/textView_register_fragment"
+            android:layout_width="283dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="40dp"
+            android:text="Register"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guideline111"
+            app:layout_constraintStart_toStartOf="@+id/guideline100"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/username_data_edittext_register_fragment"
+            android:layout_width="283dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:hint="@string/username"
+            android:inputType="textPersonName"
+            android:paddingStart="15dp"
+            android:textColor="@color/B_white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline111"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView_register_fragment"
+            app:layout_constraintTop_toBottomOf="@+id/textView_register_fragment" />
+
+        <EditText
+            android:id="@+id/password_data_textview"
+            android:layout_width="283dp"
+            android:layout_height="58dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingStart="15dp"
+            android:textColor="@color/B_white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline111"
+            app:layout_constraintStart_toStartOf="@+id/username_hint_textview"
+            app:layout_constraintTop_toBottomOf="@+id/username_hint_textview" />
+
+        <TextView
+            android:id="@+id/password_hint_textview"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/lastname_hint_edittext"
+            android:textColor="@color/from_error_orange"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/password_data_textview"
+            app:layout_constraintTop_toBottomOf="@+id/password_data_textview"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6"
+            app:layout_constraintGuide_begin="263dp" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline77"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="41dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8953771" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

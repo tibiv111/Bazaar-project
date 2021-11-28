@@ -1,10 +1,18 @@
 package project.bazaar.model
 
+import android.widget.ImageView
 import com.squareup.moshi.JsonClass
+import java.io.File
 
 //import com.google.gson.annotations.SerializedName
 
-data class User(var username: String="", var password: String="", val email: String="", var phone_number: String="")
+/*
+Data class for the information of user.
++
+LoginRequest data and LoginResponse data in JSON format for the rest api
+ */
+
+data class User(var username: String="", var password: String="", var email: String="", var phone_number: String="")
 
 @JsonClass(generateAdapter = true)
 data class LoginRequest (
@@ -21,6 +29,24 @@ data class LoginResponse (
     var creation_time: Long,
     var refresh_time: Long
 )
+@JsonClass(generateAdapter = true)
+data class RegisterRequest(
+    var username: String,
+    var password: String,
+    var email: String,
+    var phone_number: String
+
+
+)
+
+@JsonClass(generateAdapter = true)
+data class RegisterResponse(
+    var code : Int,
+    var message : String,
+    var creation_time: Long
+)
+
+
 
 
 // GSon converter

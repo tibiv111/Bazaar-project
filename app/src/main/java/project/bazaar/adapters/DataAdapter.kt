@@ -12,6 +12,13 @@ import com.bumptech.glide.Glide
 import project.bazaar.model.Product
 import project.bazaar.R
 
+/*
+Adapter + Viewholder:
+
+The adapter's role is to convert an object at a position into a list row item to be inserted.
+However, with a RecyclerView the adapter requires the existence of a "ViewHolder" object which
+describes and provides access to all the views within each item row.
+ */
 class DataAdapter(
     private var list: ArrayList<Product>,
     private val context: Context,
