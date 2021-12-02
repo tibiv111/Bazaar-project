@@ -35,16 +35,12 @@
 
         <item name="android:editTextStyle">@style/turqoiseLine</item>
 
+        <item name="android:colorPrimaryDark">@color/background_dark</item>
 
-        <item name="android:statusBarColor" tools:targetApi="l">@color/B_dark</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
 
 
-        <item name="android:buttonStyle">@drawable/white_border_button</item>
-        <item name="buttonStyleSmall">@drawable/white_border_button</item>
-        <item name="buttonBarButtonStyle">@drawable/white_border_button</item>
-        <item name="buttonBarNegativeButtonStyle">@drawable/white_border_button</item>
-        <item name="buttonBarNeutralButtonStyle">@drawable/white_border_button</item>
-        <item name="android:buttonTint">@drawable/white_border_button</item>
+
 
 
 

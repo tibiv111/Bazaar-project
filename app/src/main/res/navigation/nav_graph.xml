@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"
@@ -31,4 +34,35 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="project.bazaar.fragments.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/myFaresFragment"
+        android:name="project.bazaar.fragments.MyFaresFragment"
+        android:label="fragment_my_fares"
+        tools:layout="@layout/fragment_my_fares" />
+    <fragment
+        android:id="@+id/myMarketFragment"
+        android:name="project.bazaar.fragments.MyMarketFragment"
+        android:label="fragment_my_market"
+        tools:layout="@layout/fragment_my_market" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="project.bazaar.fragments.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="project.bazaar.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

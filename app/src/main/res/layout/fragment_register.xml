@@ -7,35 +7,35 @@
     tools:context=".fragments.RegisterFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView2"
         android:layout_width="149dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/logo_of_application"
         android:src="@drawable/ic_bazaar_logo_coloured"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:contentDescription="@string/logo_of_application" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutInside"
         android:layout_width="359dp"
-        android:layout_height="523dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
         android:background="@color/B_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="20dp"
             android:text="@string/already_have_account_constant"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/loginClickable"
@@ -46,7 +46,7 @@
             android:id="@+id/loginClickable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="40dp"
             android:clickable="true"
             android:onClick="logInClickableFunction"
@@ -155,7 +155,7 @@
             android:id="@+id/username_data_edittext_register_fragment"
             android:layout_width="283dp"
             android:layout_height="58dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/textview_border"
             android:ems="10"
             android:hint="@string/username"
@@ -209,8 +209,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.6"
-            app:layout_constraintGuide_begin="263dp" />
+            app:layout_constraintGuide_begin="263dp"
+            app:layout_constraintGuide_percent="0.6" />
 
 
         <androidx.constraintlayout.widget.Guideline

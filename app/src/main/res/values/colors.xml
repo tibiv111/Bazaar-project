@@ -5,6 +5,7 @@
     <color name="background_dark">#161616</color>
     <color name="B_white">#EEEEEE</color>
     <color name="hintColorGray">#BEEEEEEE</color>
+    <color name="gray">#51FFFFFF</color>
     <color name="from_error_orange">#FF1E1E</color>
     <color name="Dark">#000000</color>
 

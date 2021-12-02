@@ -4,15 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    android:screenOrientation="portrait"
+    tools:context=".HomeActivity"
+    android:id="@+id/homeActivity">
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomNavigationBarId"
+        app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
+        android:background="@color/B_dark"
+        app:itemTextColor="@drawable/item_selector"
+        app:itemIconTint="@drawable/item_selector"
+
+
+        app:menu="@menu/bottom_menu_items"
+        app:itemRippleColor="@color/B_white"
+        app:labelVisibilityMode="labeled">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
     <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
+        android:screenOrientation="portrait"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
+        app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

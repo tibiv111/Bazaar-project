@@ -20,4 +20,11 @@
     <string name="already_have_account_constant">Already have account?</string>
     <string name="phone_number">Phone Number</string>
     <string name="logo_of_application">Logo of application</string>
+    <string name="forgot_password_constant">Forgot password</string>
+    <string name="forgotpassword_instructions_constant">We will send you an email with instructions on how to reset your password.</string>
+    <string name="email_me">Email me</string>
+    <string name="order_now">Order Now</string>
+    <string name="my_market">My Market</string>
+    <string name="my_fares">My Fares</string>
+    <string name="timeline">Timeline</string>
 </resources>

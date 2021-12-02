@@ -46,6 +46,21 @@ data class RegisterResponse(
     var creation_time: Long
 )
 
+@JsonClass(generateAdapter = true)
+data class ResetPasswordRequest(
+    var username: String,
+    var email: String
+)
+
+@JsonClass(generateAdapter = true)
+data class GeneralResponse(
+    var code : Int,
+    var message : String,
+    var timestamp: Long
+)
+
+
+
 
 
 

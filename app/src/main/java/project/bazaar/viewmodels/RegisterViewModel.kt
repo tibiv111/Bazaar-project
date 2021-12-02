@@ -52,7 +52,7 @@ class RegisterViewModel(val context: Context, val repository: Repository) : View
             val result = repository.register(request)
 
 
-            Toast.makeText(this.context, "Register successful!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.context, "Registration successful!", Toast.LENGTH_SHORT).show()
             isSucessful = true
                 //findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
 

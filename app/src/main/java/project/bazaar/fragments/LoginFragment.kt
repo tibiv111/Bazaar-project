@@ -35,6 +35,7 @@ otherwise he cannot use the Bazaar
 class LoginFragment : Fragment() {
     private lateinit var loginViewModel: LoginViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = LoginViewModelFactory(this.requireContext(), Repository())
@@ -59,8 +60,7 @@ class LoginFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar?.hide()
         //TODO(a supportactionbar-t elo kell hozni amikor szuksegunk van ra)
         forgotPasswordClick.setOnClickListener{
-            TODO()
-
+            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
         }
 
         signupButton.setOnClickListener {
