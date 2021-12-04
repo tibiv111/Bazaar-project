@@ -24,7 +24,11 @@
         android:id="@+id/listFragment"
         android:name="project.bazaar.fragments.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="project.bazaar.fragments.RegisterFragment"
@@ -54,7 +58,12 @@
         android:id="@+id/myMarketFragment"
         android:name="project.bazaar.fragments.MyMarketFragment"
         android:label="fragment_my_market"
-        tools:layout="@layout/fragment_my_market" />
+        tools:layout="@layout/fragment_my_market" >
+        <action
+            android:id="@+id/action_myMarketFragment_to_addMarketItemFragment"
+            app:destination="@id/addMarketItemFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="project.bazaar.fragments.DetailsFragment"
@@ -65,4 +74,9 @@
         android:name="project.bazaar.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/addMarketItemFragment"
+        android:name="project.bazaar.fragments.AddMarketItemFragment"
+        android:label="fragment_add_market_item"
+        tools:layout="@layout/fragment_add_market_item" />
 </navigation>

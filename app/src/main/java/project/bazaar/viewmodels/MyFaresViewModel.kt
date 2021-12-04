@@ -14,26 +14,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import project.bazaar.model.userData
 
-class ListViewModel(private val repository: Repository) : ViewModel() {
+class MyFaresViewModel(private val repository: Repository) : ViewModel() {
     var products: MutableLiveData<List<Product>> = MutableLiveData()
 
     init{
         Log.d("xxx", "ListViewModel constructor - Token: ${Bazaar.token}")
-        getProducts()
+        getProductsOfUser()
     }
 
-    fun getProducts() {
-        viewModelScope.launch {
-            try {
-                val result =
-                    repository.getProducts(Bazaar.token)
-                products.value = result.products
-                Log.d("xxx", "ListViewModel - #products:  ${result.item_count}")
-            }catch(e: Exception){
-                Log.d("xxx", "ListViewModel exception: ${e.toString()}")
-            }
-        }
-    }
 
     fun getProductsOfUser()
     {

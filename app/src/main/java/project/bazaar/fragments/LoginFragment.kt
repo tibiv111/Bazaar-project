@@ -34,7 +34,11 @@ otherwise he cannot use the Bazaar
 
 class LoginFragment : Fragment() {
     private lateinit var loginViewModel: LoginViewModel
-
+    private lateinit var editText1 : EditText
+    private lateinit var editText2 : EditText
+    private lateinit var button : Button
+    private lateinit var signupButton : Button
+    private lateinit var forgotPasswordClick : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,17 +52,16 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_login, container, false)
-        val editText1: EditText = view.findViewById(R.id.edittext_name_login_fragment)
-        val editText2: EditText = view.findViewById(R.id.edittext_password_login_fragment)
-        val button: Button = view.findViewById(R.id.button_login_fragment)
-        val signupButton : Button = view.findViewById(R.id.sign_up_button_login_fragment)
-        val forgotPasswordClick : TextView = view.findViewById(R.id.forgot_Password_click)
+        editText1 = view.findViewById(R.id.edittext_name_login_fragment)
+        editText2 = view.findViewById(R.id.edittext_password_login_fragment)
+        button = view.findViewById(R.id.button_login_fragment)
+        signupButton = view.findViewById(R.id.sign_up_button_login_fragment)
+        forgotPasswordClick = view.findViewById(R.id.forgot_Password_click)
 
 
 
         // Onclick listener for the textview click here to send new password
         (activity as AppCompatActivity?)!!.supportActionBar?.hide()
-        //TODO(a supportactionbar-t elo kell hozni amikor szuksegunk van ra)
         forgotPasswordClick.setOnClickListener{
             findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
         }
@@ -82,7 +85,9 @@ class LoginFragment : Fragment() {
                     editText2.setText("")
                     requireContext().hideKeyboard(view)
                 }
+
             }
+
 
         }
         loginViewModel.token.observe(viewLifecycleOwner){
@@ -91,6 +96,8 @@ class LoginFragment : Fragment() {
         }
         return view
     }
+
+
 
     private fun Context.hideKeyboard(view: View) {
         val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager

@@ -1,14 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutInside2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    app:layout_constraintBottom_toBottomOf="parent"
+
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
     tools:context=".fragments.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/view2"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_centerHorizontal="true"
+        android:elevation="12dp"
+        app:cardCornerRadius="80dp"
+        app:layout_constraintEnd_toStartOf="@+id/profileGuideline1"
+        app:layout_constraintStart_toStartOf="@+id/profileGuideline2"
+        app:layout_constraintTop_toTopOf="@+id/profileGuideline5">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="159dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/profile_picture_description"
+            android:src="@drawable/ic_tile_1"
+            />
+    </androidx.cardview.widget.CardView>
+
+
+    <EditText
+        android:id="@+id/profileEmailTextview"
+        android:layout_width="300dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/textview_border_disabled"
+        android:ems="10"
+        android:hint="@string/email_hint_edittext_constant"
+        android:inputType="textEmailAddress"
+        android:paddingStart="15dp"
+        android:textColor="@color/B_white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/profileGuideline1"
+        app:layout_constraintStart_toStartOf="@+id/profileGuideline2"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+
+    <EditText
+        android:id="@+id/username_profile_fragment"
+        android:layout_width="300dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/textview_border"
+        android:ems="10"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:paddingStart="15dp"
+        android:textColor="@color/B_white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/profileEmailTextview"
+        app:layout_constraintStart_toStartOf="@+id/profileEmailTextview"
+        app:layout_constraintTop_toBottomOf="@+id/profileEmailTextview" />
+
+
+    <EditText
+        android:id="@+id/phone_number_profile_fragment"
+        android:layout_width="300dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/textview_border"
+        android:ems="10"
+        android:hint="@string/phone_number"
+        android:inputType="textPersonName"
+        android:paddingStart="15dp"
+        android:textColor="@color/B_white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/username_profile_fragment"
+        app:layout_constraintStart_toStartOf="@+id/username_profile_fragment"
+        app:layout_constraintTop_toBottomOf="@+id/username_profile_fragment" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button"
+        android:id="@+id/saveChangesButton"
+        android:layout_width="300dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/turqoise"
+        android:text="@string/save_changes"
+        android:textColor="@color/B_dark"
+        app:layout_constraintBottom_toTopOf="@+id/profileGuideline3"
+        app:layout_constraintEnd_toEndOf="@+id/phone_number_profile_fragment"
+        app:layout_constraintStart_toStartOf="@+id/phone_number_profile_fragment"
+        app:layout_constraintTop_toBottomOf="@+id/phone_number_profile_fragment"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profileGuideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profileGuideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="263dp"
+        app:layout_constraintGuide_percent="0.6" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profileGuideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profileGuideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="41dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profileGuideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8953771" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

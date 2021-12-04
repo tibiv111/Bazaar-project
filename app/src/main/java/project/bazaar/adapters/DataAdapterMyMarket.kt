@@ -1,12 +1,16 @@
 package project.bazaar.adapters
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Typeface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getColor
+
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import project.bazaar.model.Product
@@ -19,13 +23,13 @@ The adapter's role is to convert an object at a position into a list row item to
 However, with a RecyclerView the adapter requires the existence of a "ViewHolder" object which
 describes and provides access to all the views within each item row.
  */
-class DataAdapter(
+class DataAdapterMyMarket(
     private var list: ArrayList<Product>,
     private val context: Context,
     private val listener: OnItemClickListener, //this is reusable(interface)!
     private val listener2: OnItemLongClickListener
 ) :
-    RecyclerView.Adapter<DataAdapter.DataViewHolder>() {
+    RecyclerView.Adapter<DataAdapterMyMarket.DataViewHolder>() {
 
 
 
@@ -34,12 +38,13 @@ class DataAdapter(
     //more explicitly we cannot use the recycleview without the dataviewholder class because it's inner
     inner class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener, View.OnLongClickListener {
-        val textView_name: TextView = itemView.findViewById(R.id.textView_name_item_layout)
-        val textView_price: TextView = itemView.findViewById(R.id.textView_price_item_layout)
-        val textView_amountType : TextView = itemView.findViewById(R.id.textView_item_price_amount_type)
-        val textView_priceType : TextView = itemView.findViewById(R.id.textView_item_price_type)
-        val textView_seller: TextView = itemView.findViewById(R.id.textView_seller_item_layout)
-        val imageView: ImageView = itemView.findViewById(R.id.imageView_item_layout)
+        val textView_name: TextView = itemView.findViewById(R.id.textView_name_item_layout2)
+        val textView_price: TextView = itemView.findViewById(R.id.textView_price_item_layout2)
+        val textView_seller: TextView = itemView.findViewById(R.id.textView_seller_item_layout2)
+        val textView_amountType : TextView = itemView.findViewById(R.id.textView_item_price_amount_type2)
+        val textView_priceType : TextView = itemView.findViewById(R.id.textView_item_price_type2)
+        val imageView: ImageView = itemView.findViewById(R.id.imageView_item_layout2)
+        val textview_active : TextView = itemView.findViewById(R.id.itemActiveTextView)
 
         init{
             itemView.setOnClickListener(this)
@@ -55,8 +60,8 @@ class DataAdapter(
             val currentPosition = this.adapterPosition
             if(currentPosition != RecyclerView.NO_POSITION) //NO_POSITION = -1
             {
-                    //it's possible that we delete an item but click it before it's completely
-                    // animated off from recyleview, since recycleview has built-in animation
+                //it's possible that we delete an item but click it before it's completely
+                // animated off from recyleview, since recycleview has built-in animation
                 listener2.onItemLongClick(currentPosition)
             }
 
@@ -77,7 +82,7 @@ class DataAdapter(
     // 2. Called only a few times = number of items on screen + a few more ones
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_layout_mymarket, parent, false)
         return DataViewHolder(itemView)
     }
 
@@ -93,6 +98,20 @@ class DataAdapter(
         holder.textView_amountType.text = currentItem.amount_type
         val seller = "Seller: " + currentItem.username
         holder.textView_seller.text = seller
+        if(currentItem.is_active)
+        {
+            holder.textview_active.text = "Active"
+        }
+        else
+        {
+            holder.textView_priceType.typeface = Typeface.DEFAULT
+            holder.textView_amountType.typeface = Typeface.DEFAULT
+            holder.textView_price.typeface = Typeface.DEFAULT
+            holder.textview_active.text = "Inactive"
+            holder.textview_active.setTextColor(Color.GRAY)
+        }
+
+
 
         val images = currentItem.images
         if( images != null && images.isNotEmpty()) {

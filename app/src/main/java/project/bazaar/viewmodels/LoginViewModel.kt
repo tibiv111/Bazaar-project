@@ -2,6 +2,7 @@ package project.bazaar.viewmodels
 
 
 import android.content.Context
+import android.service.autofill.UserData
 import android.text.TextUtils.substring
 import android.util.Log
 import android.widget.Toast
@@ -16,6 +17,8 @@ import project.bazaar.repository.Repository
 import project.bazaar.utils.SessionManager
 import kotlinx.coroutines.launch
 import java.nio.file.Files.find
+import project.bazaar.model.userData.changeData
+import project.bazaar.model.userData.changeDataAndImage
 
 
 class LoginViewModel(val context: Context, val repository: Repository) : ViewModel() {
@@ -48,8 +51,17 @@ class LoginViewModel(val context: Context, val repository: Repository) : ViewMod
         try {
             val result = repository.login(request)
 
+            val userdata : UserData
             Bazaar.token = result.token
             token.value = result.token
+            changeData(result.username, result.email, result.phone_number.toString())
+            /*
+            user.value!!.username = result.username
+            user.value!!.email = result.email
+            user.value!!.phone_number = result.phone_number.toString()
+
+             */
+
             Toast.makeText(this.context, "Logged in!", Toast.LENGTH_SHORT).show()
             Log.d("xxx", "Bazaar - token:  ${Bazaar.token}")
             isSuccessful = true

@@ -28,6 +28,8 @@ import org.xmlpull.v1.XmlPullParser
 class HomeActivity : AppCompatActivity() {
     private lateinit var bottomNav : BottomNavigationView
     private lateinit var navController : NavController
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -59,6 +61,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         }
+
 
 
         bottomNav.setupWithNavController(navController)

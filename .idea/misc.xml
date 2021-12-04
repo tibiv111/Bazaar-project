@@ -14,16 +14,18 @@
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/ic_logo_colored.xml" value="0.202734375" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/ic_logo_icon_foreground.xml" value="0.202734375" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/ic_my_market.xml" value="0.109765625" />
+        <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/ic_round_add_24.xml" value="0.109765625" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/ic_screen_bg__2_.xml" value="0.2703125" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/item_deselector.xml" value="0.202734375" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/item_selector.xml" value="0.109765625" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/search_background.xml" value="0.2703125" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/textview_border.xml" value="0.109765625" />
+        <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/textview_border_disabled.xml" value="0.10703125" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/toolbar_1.xml" value="0.10703125" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/drawable/turqoise_button.xml" value="0.109765625" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/font/roboto.xml" value="0.21328125" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout-land/fragment_login.xml" value="0.11022927689594356" />
-        <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/activity_home.xml" value="0.2" />
+        <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/fragment_details.xml" value="0.14344262295081966" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/fragment_forgot_password.xml" value="0.152" />
@@ -31,8 +33,10 @@
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/fragment_login.xml" value="0.12" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/fragment_my_fares.xml" value="0.1" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/fragment_my_market.xml" value="0.1" />
+        <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/fragment_register.xml" value="0.152" />
-        <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/item_layout.xml" value="0.2" />
+        <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/item_layout.xml" value="0.44457831325301206" />
+        <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/item_layout_mymarket.xml" value="0.176" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/toolbar_1.xml" value="0.1" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/layout/topbar.xml" value="0.1" />
         <entry key="..\:/Work/UNI/Third_year_first_semester/Android/Projekt/Bazaar/app/src/main/res/menu/bottom_menu_items.xml" value="0.1" />

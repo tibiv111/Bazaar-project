@@ -27,4 +27,8 @@
     <string name="my_market">My Market</string>
     <string name="my_fares">My Fares</string>
     <string name="timeline">Timeline</string>
+    <string name="profile_picture_description">Profile picture description</string>
+    <string name="profile_settings">Profile settings</string>
+    <string name="save_changes">Save changes</string>
+    <string name="this_button_open_form_for_product_add">This button open form for product add</string>
 </resources>

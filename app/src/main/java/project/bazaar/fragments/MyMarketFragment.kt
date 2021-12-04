@@ -1,69 +1,96 @@
 package project.bazaar.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import project.bazaar.R
+import project.bazaar.adapters.DataAdapter
+import project.bazaar.adapters.DataAdapterMyMarket
+import project.bazaar.model.Product
+import project.bazaar.repository.Repository
+import project.bazaar.viewmodels.ListViewModel
+import project.bazaar.viewmodels.ListViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class MyMarketFragment : Fragment(), DataAdapterMyMarket.OnItemClickListener, DataAdapterMyMarket.OnItemLongClickListener {
+    lateinit var listViewModel: ListViewModel
+    private lateinit var recycler_view: RecyclerView
+    private lateinit var adapter: DataAdapterMyMarket
+    private lateinit var addButton: FloatingActionButton
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyMarketFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MyMarketFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        val factory = ListViewModelFactory(Repository())
+        listViewModel = ViewModelProvider(this, factory).get(ListViewModel::class.java)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
+        //here I set up the required actionbar for my fragment
         val actionBar = (activity as AppCompatActivity?)!!.supportActionBar
-        actionBar?.title = ""
+        actionBar?.title = "My Market"
         actionBar?.setDisplayShowHomeEnabled(true)
-        actionBar?.setDisplayHomeAsUpEnabled(false)
-        actionBar?.setLogo(R.drawable.ic_bazaar_logo_coloured)
-        actionBar?.setDisplayUseLogoEnabled(true)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        //actionBar?.setLogo(R.drawable.ic_bazaar_logo_coloured)
+        actionBar?.setDisplayUseLogoEnabled(false)
 
         actionBar?.show()
-        return inflater.inflate(R.layout.fragment_my_market, container, false)
+
+
+
+        // Inflate the layout for this fragment
+
+        val view =  inflater.inflate(R.layout.fragment_my_market, container, false)
+        addButton = view.findViewById(R.id.addButtonMyMarket)
+
+        recycler_view = view.findViewById(R.id.recycler_view3)
+        setupRecyclerView()
+        listViewModel.products.observe(viewLifecycleOwner){
+            adapter.setData(listViewModel.products.value as ArrayList<Product>)
+            adapter.notifyDataSetChanged()
+        }
+        addButton.setOnClickListener {
+            findNavController().navigate(R.id.action_myMarketFragment_to_addMarketItemFragment)
+        }
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyMarketFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyMarketFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun setupRecyclerView(){
+        adapter = DataAdapterMyMarket(ArrayList<Product>(), this.requireContext(), this, this) //here we
+        recycler_view.adapter = adapter
+        recycler_view.layoutManager = LinearLayoutManager(this.context)
+        recycler_view.addItemDecoration(
+            DividerItemDecoration(
+                activity,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+        recycler_view.setHasFixedSize(true)
     }
+
+    override fun onItemClick(position: Int) {
+        Log.d("xxx", "Item $position was clicked")
+        val clickedItem = listViewModel.products.value!![position]
+        findNavController().navigate(R.id.detailsFragment)
+
+    }
+
+    override fun onItemLongClick(position: Int) {
+//        TODO("Not yet implemented")
+    }
+
 }
