@@ -88,12 +88,9 @@
             android:layout_width="283dp"
             android:layout_height="50dp"
             android:layout_marginTop="4dp"
-
             android:backgroundTint="@color/turqoise"
             android:text="@string/log_in"
             android:textColor="@color/B_dark"
-
-
             app:layout_constraintStart_toStartOf="@+id/password_hint_textview_login_fragment"
             app:layout_constraintTop_toTopOf="@+id/guideline5"
             app:rippleColor="@color/B_dark" />
@@ -157,6 +154,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline11"
             app:layout_constraintStart_toStartOf="@+id/guideline10"
             app:layout_constraintTop_toBottomOf="@+id/view3" />
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sign_up_button_login_fragment"

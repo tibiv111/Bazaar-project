@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             Log.d("Handler", "This is the handler code")
             finish()
-
         }, 3000)
         Log.d("Handler", "This should run before the handler code")
     }

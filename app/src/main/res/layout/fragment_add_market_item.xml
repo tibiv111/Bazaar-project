@@ -1,14 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/B_white"
     tools:context=".fragments.AddMarketItemFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/isActiveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/turqoise"
+        android:text="@string/active"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/myguideline1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myguideline2"
+        app:layout_constraintTop_toTopOf="@+id/myguideline3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/myguideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/myguideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05109489" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/give_us_details_about_your_fare"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/isActiveButton"
+        app:layout_constraintTop_toBottomOf="@+id/isActiveButton" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/addTitleTextView"
+        android:layout_width="370dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/textview_border_white"
+
+        android:ems="10"
+        android:hint="@string/title"
+        android:inputType="textPersonName"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dark_hintColorGray"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/myguideline1"
+        app:layout_constraintStart_toStartOf="@+id/myguideline2"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ADD_amount"
+        android:layout_width="370dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/textview_border_white"
+        android:hint="@string/amount"
+        android:inputType="number"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dark_hintColorGray"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/ADD_price_per_amount"
+        app:layout_constraintStart_toStartOf="@+id/myguideline2"
+        app:layout_constraintTop_toBottomOf="@+id/ADD_price_per_amount" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ADD_price_per_amount"
+        android:layout_width="370dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/textview_border_white"
+        android:ems="10"
+        android:hint="@string/price_amount"
+        android:inputType="number"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dark_hintColorGray"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/addTitleTextView"
+        app:layout_constraintStart_toStartOf="@+id/addTitleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/addTitleTextView" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ADD_price_type"
+        android:layout_width="180dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/textview_border_white"
+        android:hint="@string/price_type"
+        android:inputType="textCapCharacters"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dark_hintColorGray"
+        app:layout_constraintStart_toStartOf="@+id/ADD_amount"
+        app:layout_constraintTop_toBottomOf="@+id/ADD_amount" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ADD_amount_type"
+        android:layout_width="180dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/textview_border_white"
+        android:hint="@string/amount_type"
+        android:inputType="textCapCharacters"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dark_hintColorGray"
+        app:layout_constraintEnd_toEndOf="@+id/ADD_amount"
+        app:layout_constraintStart_toEndOf="@+id/ADD_price_type"
+        app:layout_constraintTop_toBottomOf="@+id/ADD_amount" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ADD_rating"
+        android:layout_width="370dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/textview_border_white"
+        android:hint="@string/rating"
+        android:padding="12dp"
+        android:inputType="numberDecimal"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dark_hintColorGray"
+        app:layout_constraintEnd_toEndOf="@+id/ADD_amount_type"
+        app:layout_constraintStart_toStartOf="@+id/ADD_price_type"
+        app:layout_constraintTop_toBottomOf="@+id/ADD_price_type" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ADD_description"
+        android:layout_width="370dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/textview_border_white"
+        android:hint="@string/description"
+        android:padding="12dp"
+        android:inputType="textLongMessage"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dark_hintColorGray"
+        app:layout_constraintEnd_toEndOf="@+id/ADD_rating"
+        app:layout_constraintStart_toStartOf="@+id/ADD_rating"
+        app:layout_constraintTop_toBottomOf="@+id/ADD_rating" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ADD_add_item_button"
+        android:layout_width="370dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/turqoise"
+
+        android:text="@string/add_item"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/ADD_description"
+        app:layout_constraintStart_toStartOf="@+id/ADD_description"
+        app:layout_constraintTop_toBottomOf="@+id/ADD_description" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/myguideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

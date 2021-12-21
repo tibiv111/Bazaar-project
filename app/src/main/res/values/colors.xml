@@ -2,6 +2,7 @@
 <resources>
     <color name="turqoise">#00B5C0</color>
     <color name="B_dark">#212121</color>
+    <color name="dark_hintColorGray">#636363</color>
     <color name="background_dark">#161616</color>
     <color name="B_white">#EEEEEE</color>
     <color name="hintColorGray">#BEEEEEEE</color>

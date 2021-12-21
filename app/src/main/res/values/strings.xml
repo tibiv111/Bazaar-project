@@ -31,4 +31,17 @@
     <string name="profile_settings">Profile settings</string>
     <string name="save_changes">Save changes</string>
     <string name="this_button_open_form_for_product_add">This button open form for product add</string>
+    <string name="search">Search</string>
+    <string name="search_long">Search by product name</string>
+    <string name="delete_item_menu_string">Delete item</string>
+    <string name="active">ACTIVE</string>
+    <string name="give_us_details_about_your_fare">Give us details about your fare</string>
+    <string name="title">Title</string>
+    <string name="price_amount">Price / Amount</string>
+    <string name="description">Description</string>
+    <string name="amount_type">Amount type</string>
+    <string name="price_type">Price type</string>
+    <string name="amount">Amount</string>
+    <string name="add_item">ADD ITEM</string>
+    <string name="rating">Rating</string>
 </resources>

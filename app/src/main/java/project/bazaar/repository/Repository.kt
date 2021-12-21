@@ -6,6 +6,10 @@ import android.util.Log
 import project.bazaar.Bazaar
 import project.bazaar.api.RetrofitInstance
 import project.bazaar.model.*
+import retrofit2.http.Header
+import retrofit2.http.Multipart
+import retrofit2.http.Part
+import retrofit2.http.Query
 
 class Repository {
     suspend fun login(request: LoginRequest): LoginResponse {
@@ -36,4 +40,23 @@ class Repository {
 
         return  RetrofitInstance.api.updateUserData(Bazaar.token, request)
     }
+
+    suspend fun deleteProduct(@Query("product_id") product_id : String, @Header("token") token: String) : DeleteProductResponse
+    {
+        return RetrofitInstance.api.deleteProduct(product_id, token)
+    }
+
+    suspend fun addProduct(@Header("token") token: String,
+                           @Part("title") title : String,
+                           @Part("description") description : String,
+                           @Part("price_per_unit") price_per_unit: String,
+                           @Part("units") units : String,
+                           @Part("is_active") is_active: Boolean,
+                           @Part("rating") rating: Double,
+                           @Part("amount_type") amount_type: String,
+                           @Part("price_type") price_type: String ) : AddProductResponse
+    {
+        return RetrofitInstance.api.addProduct(token, title, description, price_per_unit, units, is_active, rating, amount_type, price_type)
+    }
+
 }

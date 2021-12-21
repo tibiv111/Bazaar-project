@@ -31,8 +31,7 @@
             android:layout_width="159dp"
             android:layout_height="match_parent"
             android:contentDescription="@string/profile_picture_description"
-            android:src="@drawable/ic_tile_1"
-            />
+            android:src="@drawable/ic_tile_1" />
     </androidx.cardview.widget.CardView>
 
 

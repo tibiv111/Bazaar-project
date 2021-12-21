@@ -35,6 +35,11 @@ class ListViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
+    fun refresh()
+    {
+        getProducts()
+    }
+
     fun getProductsOfUser()
     {
         val username = userData.getUsername()

@@ -108,7 +108,10 @@ data class UpdateUserDataResponse(
     var updatedData: updatedData,
     var timestamp: Long
 
+
 )
+
+
 
 @JsonClass(generateAdapter = true)
 data class updatedData(

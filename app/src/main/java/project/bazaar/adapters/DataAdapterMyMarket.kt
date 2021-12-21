@@ -4,13 +4,11 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getColor
-
+import project.bazaar.model.userData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import project.bazaar.model.Product
@@ -130,6 +128,10 @@ class DataAdapterMyMarket(
         }
 
     }
+    fun removeItem(product : Product)
+    {
+        list.remove(product)
+    }
 
     override fun getItemCount() = list.size
 
@@ -137,5 +139,11 @@ class DataAdapterMyMarket(
     fun setData(newlist: ArrayList<Product>){
         list = newlist
     }
+
+
+
+
+
+
 }
 

@@ -62,7 +62,10 @@
         <action
             android:id="@+id/action_myMarketFragment_to_addMarketItemFragment"
             app:destination="@id/addMarketItemFragment"
-            app:enterAnim="@anim/nav_default_enter_anim" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/detailsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -78,5 +81,12 @@
         android:id="@+id/addMarketItemFragment"
         android:name="project.bazaar.fragments.AddMarketItemFragment"
         android:label="fragment_add_market_item"
-        tools:layout="@layout/fragment_add_market_item" />
+        tools:layout="@layout/fragment_add_market_item" >
+        <action
+            android:id="@+id/action_addMarketItemFragment_to_myMarketFragment"
+            app:destination="@id/myMarketFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/detailsFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
 </navigation>

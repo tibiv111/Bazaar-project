@@ -27,5 +27,20 @@ interface MarketApi {
     @POST(Constants.UPDATE_USER_DATA_URL)
     suspend fun updateUserData(@Header("token") token: String, @Body request: UpdateUserDataRequest) : UpdateUserDataResponse
 
+    @POST(Constants.DELETE_PRODUCT_URL)
+    suspend fun deleteProduct(@Query("product_id") product_id : String, @Header("token") token: String) : DeleteProductResponse
+
+    @Multipart
+    @POST(Constants.ADD_PRODUCT)
+    suspend fun addProduct(@Header("token") token: String,
+                            @Part("title") title : String,
+                            @Part("description") description : String,
+                           @Part("price_per_unit") price_per_unit: String,
+                           @Part("units") units : String,
+                           @Part("is_active") is_active: Boolean,
+                           @Part("rating") rating: Double,
+                           @Part("amount_type") amount_type: String,
+                           @Part("price_type") price_type: String
+                                ) : AddProductResponse
 
 }

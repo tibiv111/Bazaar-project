@@ -112,17 +112,23 @@ class ProfileFragment : Fragment() {
                 }
 
                  */
-                if (it != null) {
-
-                    it.phone_number = phoneNumber.text.toString()
-                    it.email = email.text.toString()
-                    it.username = username.text.toString()
-
+                val regexPhone = "^(\\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\\s|\\.|\\-)?([0-9]{3}(\\s|\\.|\\-|)){2}\$"
+                if(!phoneNumber.text.toString().matches(Regex(regexPhone)))
+                {
+                    Toast.makeText(context, "Invalid phone number. \n Please enter a romanian number: ", Toast.LENGTH_LONG).show()
                 }
+                else
+                {
+                    if (it != null) {
 
+                        it.phone_number = phoneNumber.text.toString()
+                        it.email = email.text.toString()
+                        it.username = username.text.toString()
 
-
+                    }
+                }
             }
+
             lifecycleScope.launch {
                 profileViewModel.updateUserData()
             }

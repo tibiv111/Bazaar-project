@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -19,14 +21,15 @@ The adapter's role is to convert an object at a position into a list row item to
 However, with a RecyclerView the adapter requires the existence of a "ViewHolder" object which
 describes and provides access to all the views within each item row.
  */
+
 class DataAdapter(
-    private var list: ArrayList<Product>,
+    private var list: MutableList<Product>,
     private val context: Context,
     private val listener: OnItemClickListener, //this is reusable(interface)!
     private val listener2: OnItemLongClickListener
 ) :
-    RecyclerView.Adapter<DataAdapter.DataViewHolder>() {
-
+    RecyclerView.Adapter<DataAdapter.DataViewHolder>(), Filterable {
+    val listFull: MutableList<Product> = mutableListOf()
 
 
     // 1. user defined ViewHolder type - Embedded class!
@@ -41,9 +44,18 @@ class DataAdapter(
         val textView_seller: TextView = itemView.findViewById(R.id.textView_seller_item_layout)
         val imageView: ImageView = itemView.findViewById(R.id.imageView_item_layout)
 
-        init{
+
+            init{
             itemView.setOnClickListener(this)
             itemView.setOnLongClickListener(this)
+            if(listFull.isEmpty())
+            {
+                listFull.addAll(list)
+            }
+
+            //Log.d("xxx2", listFull.toString())
+
+
         }
         override fun onClick(p0: View?) {
             val currentPosition = this.adapterPosition
@@ -115,8 +127,49 @@ class DataAdapter(
     override fun getItemCount() = list.size
 
     // Update the list
-    fun setData(newlist: ArrayList<Product>){
+    fun setData(newlist: MutableList<Product>){
         list = newlist
     }
+
+    override fun getFilter(): Filter {
+        return searchFilter
+    }
+    private val searchFilter = object : Filter()
+    {
+        override fun performFiltering(p0: CharSequence?): FilterResults {
+            val filteredList = mutableListOf<Product>()
+            if(p0 == null || p0.isEmpty())
+            {
+                filteredList.addAll(listFull)
+            }
+            else
+            {
+                for(item in listFull)
+                {
+                    if(item.title.toLowerCase().trim().contains(p0.toString().toLowerCase().trim()))
+                    {
+                        filteredList.add(item);
+                    }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+
+        }
+
+        override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+            list.clear()
+            //listFull.clear()
+
+            list.addAll(p1?.values as MutableList<Product>)
+            notifyDataSetChanged()
+
+
+        }
+
+    }
+
+
 }
 

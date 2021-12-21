@@ -41,11 +41,11 @@ class MyFaresFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapter
 
         //here I set up the required actionbar for my fragment
         val actionBar = (activity as AppCompatActivity?)!!.supportActionBar
-        actionBar?.title = "My Fares"
-        actionBar?.setDisplayShowHomeEnabled(true)
-        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.title = "My Fares" // ez a title
+        actionBar?.setDisplayShowHomeEnabled(true) // ez nem tudom már
+        actionBar?.setDisplayHomeAsUpEnabled(true) //Ez a vissza jel
         //actionBar?.setLogo(R.drawable.ic_bazaar_logo_coloured)
-        actionBar?.setDisplayUseLogoEnabled(false)
+        actionBar?.setDisplayUseLogoEnabled(false) // Ez a logo a title mellett
 
         actionBar?.show()
 

@@ -2,9 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/bazaarLogo"
-        android:title=""
-        android:icon="@drawable/ic_bazaar_logo_coloured" />
+
     <item android:id="@+id/profileIcon"
         android:title=""
         app:showAsAction="always"
