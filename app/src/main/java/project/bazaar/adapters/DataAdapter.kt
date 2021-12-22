@@ -5,14 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import project.bazaar.model.Product
 import project.bazaar.R
+import project.bazaar.model.userData
 
 /*
 Adapter + Viewholder:
@@ -43,6 +41,7 @@ class DataAdapter(
         val textView_priceType : TextView = itemView.findViewById(R.id.textView_item_price_type)
         val textView_seller: TextView = itemView.findViewById(R.id.textView_seller_item_layout)
         val imageView: ImageView = itemView.findViewById(R.id.imageView_item_layout)
+        val addOrderButton : Button = itemView.findViewById(R.id.addOrderButton)
 
 
             init{
@@ -77,6 +76,7 @@ class DataAdapter(
     }
     interface OnItemClickListener{
         fun onItemClick(position: Int)
+        fun onAddOrderButtonClick(position: Int)
         //here the position could be changed to the whole item, but only if you have your data set
         // only available in the adapter
 
@@ -86,12 +86,16 @@ class DataAdapter(
         fun onItemLongClick(position: Int)
     }
 
+
+
     // 2. Called only a few times = number of items on screen + a few more ones
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
         return DataViewHolder(itemView)
     }
+
+
 
 
     // 3. Called many times, when we scroll the list
@@ -105,6 +109,11 @@ class DataAdapter(
         holder.textView_amountType.text = currentItem.amount_type
         val seller = "Seller: " + currentItem.username
         holder.textView_seller.text = seller
+        if(currentItem.username.removeSurrounding("\"") == userData.getUsername().removeSurrounding("\""))
+        {
+            holder.addOrderButton.isEnabled = false
+        }
+
 
         val images = currentItem.images
         if( images != null && images.isNotEmpty()) {
@@ -121,8 +130,23 @@ class DataAdapter(
                 .override(300, 300)
                 .into(holder.imageView);
         }
+        holder.addOrderButton.setOnClickListener {
+            val position : Int = holder.adapterPosition
+            if(position != RecyclerView.NO_POSITION)
+            {
+                holder.addOrderButton.isEnabled = false
+                listener.onAddOrderButtonClick(position)
+
+            }
+        }
+
+
+
 
     }
+
+
+
 
     override fun getItemCount() = list.size
 

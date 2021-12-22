@@ -89,4 +89,14 @@
             app:popUpTo="@id/detailsFragment"
             app:popUpToInclusive="false" />
     </fragment>
+    <fragment
+        android:id="@+id/ongoingOrdersFragment"
+        android:name="project.bazaar.fragments.OngoingOrdersFragment"
+        android:label="fragment_ongoing_orders"
+        tools:layout="@layout/fragment_ongoing_orders" />
+    <fragment
+        android:id="@+id/ongoingSalesFragment"
+        android:name="project.bazaar.fragments.OngoingSalesFragment"
+        android:label="fragment_ongoing_sales"
+        tools:layout="@layout/fragment_ongoing_sales" />
 </navigation>

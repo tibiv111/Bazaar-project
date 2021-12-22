@@ -1,28 +1,13 @@
 package project.bazaar
 
-import android.app.ActionBar.DISPLAY_SHOW_CUSTOM
-import android.app.ActionBar.DISPLAY_USE_LOGO
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import android.util.Log
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import android.app.PendingIntent.getActivity
-import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.*
-import android.view.View.inflate
-import androidx.appcompat.app.ActionBar
-import androidx.core.view.forEach
 import androidx.navigation.NavController
-import com.bumptech.glide.load.engine.Resource
-import org.xmlpull.v1.XmlPullParser
 
 
 class HomeActivity : AppCompatActivity() {

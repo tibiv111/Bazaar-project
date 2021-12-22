@@ -5,12 +5,8 @@ package project.bazaar.viewmodels
 import android.util.Log
 import androidx.lifecycle.*
 import project.bazaar.Bazaar
-import project.bazaar.model.LoginRequest
 import project.bazaar.model.Product
-import project.bazaar.model.User
 import project.bazaar.repository.Repository
-import project.bazaar.utils.SessionManager
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import project.bazaar.model.userData
 
@@ -26,8 +22,19 @@ class ListViewModel(private val repository: Repository) : ViewModel() {
         viewModelScope.launch {
             try {
                 val result =
-                    repository.getProducts(Bazaar.token)
+                    repository.getProducts(Bazaar.token, 0)
+
+                for (product in result.products)
+                {
+                    product.title = product.title.removeSurrounding("\"")
+                    product.price_per_unit = product.price_per_unit.removeSurrounding("\"")
+                    product.units = product.units.removeSurrounding("\"")
+                    product.description = product.description.removeSurrounding("\"")
+                    product.amount_type = product.amount_type.removeSurrounding("\"")
+                    product.price_type = product.price_type.removeSurrounding("\"")
+                }
                 products.value = result.products
+
                 Log.d("xxx", "ListViewModel - #products:  ${result.item_count}")
             }catch(e: Exception){
                 Log.d("xxx", "ListViewModel exception: ${e.toString()}")
@@ -40,6 +47,47 @@ class ListViewModel(private val repository: Repository) : ViewModel() {
         getProducts()
     }
 
+    fun addOrder(title: String, description : String, price_per_unit : String, units : String, owner_username : String) : Boolean
+    {
+        var msg : String = "Order added successfully"
+        return viewModelScope.launch {
+            try {
+                val result = repository.addOrder(Bazaar.token, title, description, price_per_unit, units, owner_username)
+
+                Log.d("xxx3", result.toString())
+                return@launch
+            }catch (e: Exception) {
+                Log.d("ccc", e.toString())
+                if ( "300" in e.toString()) {
+                    msg = "Token not sent in header"
+
+                    //Toast.makeText(this,"Token not sent in header", Toast.LENGTH_SHORT).show()
+                }
+                if ("301" in e.toString()) {
+                    msg ="Invalid token"
+
+                    //Toast.makeText(this.context, "Invalid token", Toast.LENGTH_SHORT).show()
+                }
+                if ("302" in e.toString()) {
+                    msg = "Token expired, please log in again"
+
+                    //Toast.makeText(this.context, "Token expired, please log in again", Toast.LENGTH_SHORT).show()
+                }
+                if ("303" in e.toString()) {
+                    msg = "Title, description , price or quantity missing"
+
+                    //Toast.makeText(this.context, "Title, description , price or quantity missing", Toast.LENGTH_SHORT).show()
+                }
+                if ("304" in e.toString()) {
+                    msg = "Error inserting in database"
+
+                    //Toast.makeText(this.context, "Product id header not sent.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }.isCompleted
+
+    }
+
     fun getProductsOfUser()
     {
         val username = userData.getUsername()
@@ -47,7 +95,7 @@ class ListViewModel(private val repository: Repository) : ViewModel() {
         viewModelScope.launch {
             try {
                 val result =
-                    repository.getProductsOfUser(Bazaar.token, filter = filter)
+                    repository.getProductsOfUser(Bazaar.token, filter = filter, limit = 0)
                 products.value = result.products
                 Log.d("xxx", "ListViewModel - #products:  ${result.item_count}")
             }catch(e: Exception){

@@ -9,12 +9,19 @@
         <entry key="..\:/Personal/Bazaar/app/src/main/res/drawable/textview_border_disabled.xml" value="0.16640625" />
         <entry key="..\:/Personal/Bazaar/app/src/main/res/drawable/textview_border_white.xml" value="0.19140625" />
         <entry key="..\:/Personal/Bazaar/app/src/main/res/drawable/white_border_button.xml" value="0.16640625" />
+        <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/activity_home.xml" value="0.275" />
         <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/fragment_add_market_item.xml" value="0.2" />
         <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/fragment_list.xml" value="0.2" />
         <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/fragment_login.xml" value="0.179296875" />
+        <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/fragment_my_fares.xml" value="0.2" />
         <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/fragment_my_market.xml" value="0.176" />
+        <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/fragment_ongoing_orders.xml" value="0.264" />
+        <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/fragment_ongoing_sales.xml" value="0.2" />
+        <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
+        <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/fragment_register.xml" value="0.16222677595628415" />
         <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/item_layout.xml" value="0.2" />
         <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/item_layout_mymarket.xml" value="0.264" />
+        <entry key="..\:/Personal/Bazaar/app/src/main/res/layout/item_layout_ongoing_sales.xml" value="0.6256781193490054" />
         <entry key="..\:/Personal/Bazaar/app/src/main/res/menu/bottom_menu_items.xml" value="0.1" />
         <entry key="..\:/Personal/Bazaar/app/src/main/res/menu/context_menu_for_delete.xml" value="0.190625" />
         <entry key="..\:/Personal/Bazaar/app/src/main/res/menu/top_actionbar_menu.xml" value="0.1" />

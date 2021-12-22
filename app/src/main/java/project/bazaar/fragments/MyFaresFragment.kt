@@ -1,37 +1,30 @@
 package project.bazaar.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import project.bazaar.R
-import project.bazaar.adapters.DataAdapter
-import project.bazaar.model.Product
-import project.bazaar.repository.Repository
-import project.bazaar.viewmodels.ListViewModel
-import project.bazaar.viewmodels.MyFaresViewModelFactory
-import project.bazaar.viewmodels.MyFaresViewModel
+import project.bazaar.adapters.ViewPagerAdapterOS
 
 
-class MyFaresFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapter.OnItemLongClickListener {
-
-    private lateinit var myFaresViewModel: MyFaresViewModel
-    private lateinit var recycler_view: RecyclerView
-    private lateinit var adapter: DataAdapter
+class MyFaresFragment : Fragment() {
 
 
+
+    private lateinit var tabLayout : TabLayout
+    private lateinit var viewPager2: ViewPager2
+    private lateinit var adapter : ViewPagerAdapterOS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = MyFaresViewModelFactory(Repository())
-        myFaresViewModel = ViewModelProvider(this, factory).get(MyFaresViewModel::class.java)
+
+
+
     }
 
     override fun onCreateView(
@@ -54,39 +47,31 @@ class MyFaresFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapter
         // Inflate the layout for this fragment
 
         val view =  inflater.inflate(R.layout.fragment_my_fares, container, false)
+        val fragmentList = arrayListOf<Fragment>(
+            OngoingSalesFragment(),
+            OngoingOrdersFragment()
+        )
+        tabLayout = view.findViewById(R.id.tabLayout)
 
-        recycler_view = view.findViewById(R.id.recycler_view2)
-        setupRecyclerView()
-        myFaresViewModel.products.observe(viewLifecycleOwner){
-            adapter.setData(myFaresViewModel.products.value as ArrayList<Product>)
-            adapter.notifyDataSetChanged()
-        }
+        adapter = ViewPagerAdapterOS(fragmentList, requireActivity().supportFragmentManager, lifecycle)
+        viewPager2 = view.findViewById(R.id.viewPager2)
+        viewPager2.adapter = adapter
+        TabLayoutMediator(tabLayout,viewPager2){tab, position ->
+            when(position)
+            {
+                0 ->{
+                    tab.text="Ongoing Sales"
+
+                }
+                1 ->
+                {
+                    tab.text= "Ongoing Orders"
+                }
+            }
+        }.attach()
         return view
     }
 
-    private fun setupRecyclerView(){
-        adapter = DataAdapter(ArrayList<Product>(), this.requireContext(), this, this) //here we
-        recycler_view.adapter = adapter
-        recycler_view.layoutManager = LinearLayoutManager(this.context)
-        recycler_view.addItemDecoration(
-            DividerItemDecoration(
-                activity,
-                DividerItemDecoration.VERTICAL
-            )
-        )
-        recycler_view.setHasFixedSize(true)
-    }
 
-    override fun onItemClick(position: Int) {
-        Log.d("xxx", "Item $position was clicked")
-        val clickedItem = myFaresViewModel.products.value!![position]
-        //findNavController().navigate(R.id.detailsFragment)
-        TODO()
-
-    }
-
-    override fun onItemLongClick(position: Int) {
-//        TODO("Not yet implemented")
-    }
 
 }

@@ -44,4 +44,8 @@
     <string name="amount">Amount</string>
     <string name="add_item">ADD ITEM</string>
     <string name="rating">Rating</string>
+    <string name="register">Register</string>
+    <string name="registerTitle">Register</string>
+    <string name="ongoing_sales">Ongoing Sales</string>
+    <string name="ongoing_orders">Ongoing Orders</string>
 </resources>

@@ -112,6 +112,7 @@ class MyMarketFragment : Fragment(), DataAdapterMyMarket.OnItemClickListener, Da
         //Toast.makeText(this.context, "long click pressed", Toast.LENGTH_SHORT).show()
         popupMenu = PopupMenu(requireActivity().applicationContext,recycler_view.getChildAt(position))
         popupMenu.menuInflater.inflate(R.menu.context_menu_for_delete,popupMenu.menu)
+
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.deleteItemMenuId -> {

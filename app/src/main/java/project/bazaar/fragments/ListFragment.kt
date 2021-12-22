@@ -23,8 +23,11 @@ import android.util.Log
 import android.view.*
 import android.widget.Filterable
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import project.bazaar.model.userData
+import kotlin.properties.Delegates
 
 
 /*
@@ -32,10 +35,10 @@ List fragment is created for the recycleview to populate
  */
 class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.OnItemLongClickListener {
     lateinit var listViewModel: ListViewModel
-
+    private var  firstResume by Delegates.notNull<Boolean>()
     private lateinit var recycler_view: RecyclerView
     private lateinit var adapter: DataAdapter
-    private lateinit var tempArrayList : ArrayList<Product>
+
     private lateinit var searchView : androidx.appcompat.widget.SearchView
 
 
@@ -43,6 +46,7 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
         super.onCreate(savedInstanceState)
         val factory = ListViewModelFactory(Repository())
         listViewModel = ViewModelProvider(this, factory).get(ListViewModel::class.java)
+        firstResume = true
     }
 
     override fun onCreateView(
@@ -77,6 +81,7 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
 
 
 
+
         searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener
         {
             override fun onQueryTextSubmit(p0: String?): Boolean {
@@ -95,6 +100,7 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
             }
 
         })
+
 
 
 
@@ -124,12 +130,44 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
         findNavController().navigate(R.id.detailsFragment)
     }
 
+    override fun onAddOrderButtonClick(position: Int) {
+        val clickedItem = listViewModel.products.value!![position]
+
+        if(clickedItem.username == userData.getUsername())
+        {
+            Toast.makeText(this.context, "You cannot buy your own product", Toast.LENGTH_SHORT).show()
+        }
+        else
+        {
+            val isSuccessful = listViewModel.addOrder(title = clickedItem.title, description = clickedItem.description,
+                price_per_unit = clickedItem.price_per_unit, units = clickedItem.units, owner_username = clickedItem.username )
+
+
+            Toast.makeText(this.context, "Order added successfully", Toast.LENGTH_SHORT).show()
+
+
+
+
+
+
+        }
+
+
+    }
+
     override fun onItemLongClick(position: Int) {
 //        TODO("Not yet implemented")
     }
 
     override fun onResume() {
-        listViewModel.refresh()
+
+        if (firstResume)
+        {
+            firstResume = false
+        }else
+        {
+            listViewModel.refresh()
+        }
         super.onResume()
 
     }

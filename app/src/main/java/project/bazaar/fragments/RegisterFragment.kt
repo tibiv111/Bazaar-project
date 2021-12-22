@@ -32,7 +32,7 @@ class RegisterFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = RegisterViewModelFactory(this.requireContext(), Repository())
-        registerViewModel = ViewModelProvider(this@RegisterFragment, factory).get(RegisterViewModel::class.java)
+        registerViewModel = ViewModelProvider(this, factory).get(RegisterViewModel::class.java)
     }
 
 

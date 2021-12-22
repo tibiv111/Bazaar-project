@@ -1,23 +1,13 @@
 package project.bazaar.viewmodels
 
 
-
-
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.*
 import project.bazaar.Bazaar
 import project.bazaar.repository.Repository
-import project.bazaar.utils.SessionManager
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import project.bazaar.HomeActivity
 import project.bazaar.model.*
-import retrofit2.http.Header
-import retrofit2.http.Query
-import kotlin.coroutines.coroutineContext
+
 
 class MyMarketViewModel(private val repository: Repository) : ViewModel() {
     var products: MutableLiveData<List<Product>> = MutableLiveData()
@@ -35,7 +25,16 @@ class MyMarketViewModel(private val repository: Repository) : ViewModel() {
         viewModelScope.launch {
             try {
                 val result =
-                    repository.getProductsOfUser(Bazaar.token, filter = filter)
+                    repository.getProductsOfUser(Bazaar.token, filter = filter, limit = 0)
+                for (product in result.products)
+                {
+                    product.title = product.title.removeSurrounding("\"")
+                    product.price_per_unit = product.price_per_unit.removeSurrounding("\"")
+                    product.units = product.units.removeSurrounding("\"")
+                    product.description = product.description.removeSurrounding("\"")
+                    product.amount_type = product.amount_type.removeSurrounding("\"")
+                    product.price_type = product.price_type.removeSurrounding("\"")
+                }
                 products.value = result.products
                 Log.d("xxx", "ListViewModel - #products:  ${result.item_count}")
             }catch(e: Exception){
@@ -59,6 +58,9 @@ class MyMarketViewModel(private val repository: Repository) : ViewModel() {
                 val result = repository.addProduct(Bazaar.token,title=title, description=description,
                     price_per_unit=price_per_unit, units = units, is_active = is_active, rating = rating,
                     amount_type = amount_type, price_type = price_type )
+
+
+
                 Log.d("ccc", result.toString())
 
             }catch (e: Exception)

@@ -9,20 +9,21 @@
     android:id="@+id/homeActivity">
 
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationBarId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottomNavigationBarId"
-        app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
         android:background="@color/B_dark"
-        app:itemTextColor="@drawable/item_selector"
         app:itemIconTint="@drawable/item_selector"
-
-
-        app:menu="@menu/bottom_menu_items"
         app:itemRippleColor="@color/B_white"
-        app:labelVisibilityMode="labeled">
+        app:itemTextColor="@drawable/item_selector"
+
+
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu_items">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

@@ -10,12 +10,13 @@ import retrofit2.http.*
 interface MarketApi {
     @POST(Constants.LOGIN_URL)
     suspend fun login(@Body request: LoginRequest): LoginResponse
+//{\"creation_time\" : 1}
+    @GET(Constants.GET_PRODUCT_URL)
+    suspend fun getProducts(@Header("token") token: String, @Header("limit") limit : Long, @Header("sort") sort : String): ProductResponse
 
     @GET(Constants.GET_PRODUCT_URL)
-    suspend fun getProducts(@Header("token") token: String): ProductResponse
+    suspend fun getProductsOfUser(@Header("token") token: String, @Header("filter") filter : String, @Header("limit") limit : Long, @Header("sort") sort : String): ProductResponse
 
-    @GET(Constants.GET_PRODUCT_URL)
-    suspend fun getProductsOfUser(@Header("token") token: String, @Header("filter") filter : String): ProductResponse
 
 
     @POST(Constants.REGISTER_URL)
@@ -42,5 +43,20 @@ interface MarketApi {
                            @Part("amount_type") amount_type: String,
                            @Part("price_type") price_type: String
                                 ) : AddProductResponse
+
+    @Multipart
+    @POST(Constants.ADD_ORDER)
+    suspend fun addOrder(@Header("token") token: String,
+                        @Part("title") title : String,
+                        @Part("description") description : String,
+                        @Part("price_per_unit") price_per_unit: String,
+                        @Part("units") units : String,
+                        @Part("owner_username") owner_username: String) : AddOrderResponse
+
+
+    @GET(Constants.GET_ORDERS)
+    suspend fun getOrdersOfUser(@Header("token") token: String, @Header("filter") filter : String, @Header("limit") limit : Long, @Header("sort") sort : String): OrderResponse
+
+
 
 }
