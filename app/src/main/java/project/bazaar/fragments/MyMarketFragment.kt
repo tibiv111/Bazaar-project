@@ -23,6 +23,7 @@ import project.bazaar.R
 import project.bazaar.adapters.DataAdapter
 import project.bazaar.adapters.DataAdapterMyMarket
 import project.bazaar.model.Product
+import project.bazaar.model.ProductDetailData
 import project.bazaar.repository.Repository
 import project.bazaar.viewmodels.ListViewModel
 import project.bazaar.viewmodels.ListViewModelFactory
@@ -101,6 +102,7 @@ class MyMarketFragment : Fragment(), DataAdapterMyMarket.OnItemClickListener, Da
     override fun onItemClick(position: Int) {
         Log.d("xxx", "Item $position was clicked")
         val clickedItem = myMarketViewModel.products.value!![position]
+        ProductDetailData.changeWholeProduct(clickedItem)
         findNavController().navigate(R.id.detailsFragment)
 
     }

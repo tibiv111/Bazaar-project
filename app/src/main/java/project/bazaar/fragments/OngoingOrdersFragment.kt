@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,11 +18,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import project.bazaar.R
 import project.bazaar.adapters.DataAdapterSales
 import project.bazaar.model.Order
+import project.bazaar.model.OrderDetailData
 import project.bazaar.repository.Repository
 import project.bazaar.viewmodels.OngoingOrdersViewModel
 import project.bazaar.viewmodels.OngoingOrdersViewModelFactory
-import project.bazaar.viewmodels.OngoingSalesViewModel
-import project.bazaar.viewmodels.OngoingSalesViewModelFactory
+
 
 
 class OngoingOrdersFragment : Fragment(), DataAdapterSales.OnItemClickListener, DataAdapterSales.OnItemLongClickListener {
@@ -78,13 +80,13 @@ class OngoingOrdersFragment : Fragment(), DataAdapterSales.OnItemClickListener, 
     override fun onItemClick(position: Int) {
         Log.d("xxx", "Item $position was clicked")
         val clickedItem = ongoingOrdersViewModel.orders.value!![position]
-        //findNavController().navigate(R.id.detailsFragment)
+        OrderDetailData.changeWholeProduct(clickedItem)
+        findNavController().navigate(R.id.orderDetailFragment)
 
 
     }
 
     override fun onItemLongClick(position: Int) {
-//        TODO("Not yet implemented")
     }
 
 

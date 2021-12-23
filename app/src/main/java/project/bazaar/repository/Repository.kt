@@ -6,10 +6,7 @@ import android.util.Log
 import project.bazaar.Bazaar
 import project.bazaar.api.RetrofitInstance
 import project.bazaar.model.*
-import retrofit2.http.Header
-import retrofit2.http.Multipart
-import retrofit2.http.Part
-import retrofit2.http.Query
+import retrofit2.http.*
 
 class Repository {
     suspend fun login(request: LoginRequest): LoginResponse {
@@ -71,6 +68,16 @@ class Repository {
         return RetrofitInstance.api.addOrder(token, title, description, price_per_unit, units, owner_username)
     }
 
+
+    suspend fun updateProduct(@Query("product_id") product_id: String, @Header("token") token: String, @Body request : UpdateProductRequest) : Product
+    {
+        return RetrofitInstance.api.updateProduct(product_id, token, request)
+    }
+
+    suspend fun updateOrder(@Query("order_id") order_id: String, @Header("token") token: String, @Body request : UpdateOrderRequest) : Order
+    {
+        return RetrofitInstance.api.updateOrder(order_id, token, request)
+    }
 
 
 

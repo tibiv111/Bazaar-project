@@ -20,7 +20,7 @@ class OngoingOrdersViewModel(private val repository: Repository) : ViewModel() {
 
 
     private fun getOrdersOfUser() {
-        val username = userData.getUsername()
+        val username = userData.getUsername().removeSurrounding("\"")
         val filter: String = "{\"username\": \"${username}\"}"
         viewModelScope.launch {
             try {

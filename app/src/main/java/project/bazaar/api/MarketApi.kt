@@ -31,6 +31,10 @@ interface MarketApi {
     @POST(Constants.DELETE_PRODUCT_URL)
     suspend fun deleteProduct(@Query("product_id") product_id : String, @Header("token") token: String) : DeleteProductResponse
 
+    @POST(Constants.UPDATE_PRODUCT)
+    suspend fun updateProduct(@Query("product_id") product_id: String, @Header("token") token: String, @Body request : UpdateProductRequest) : Product
+
+
     @Multipart
     @POST(Constants.ADD_PRODUCT)
     suspend fun addProduct(@Header("token") token: String,
@@ -43,6 +47,8 @@ interface MarketApi {
                            @Part("amount_type") amount_type: String,
                            @Part("price_type") price_type: String
                                 ) : AddProductResponse
+
+
 
     @Multipart
     @POST(Constants.ADD_ORDER)
@@ -57,6 +63,8 @@ interface MarketApi {
     @GET(Constants.GET_ORDERS)
     suspend fun getOrdersOfUser(@Header("token") token: String, @Header("filter") filter : String, @Header("limit") limit : Long, @Header("sort") sort : String): OrderResponse
 
+    @POST(Constants.UPDATE_ORDER)
+    suspend fun updateOrder(@Query("order_id") order_id: String, @Header("token") token: String, @Body request : UpdateOrderRequest) : Order
 
 
 }

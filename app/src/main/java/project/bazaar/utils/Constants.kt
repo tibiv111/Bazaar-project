@@ -12,5 +12,7 @@ object Constants {
     const val ADD_PRODUCT = "products/add"
     const val ADD_ORDER = "orders/add"
     const val GET_ORDERS = "orders"
+    const val UPDATE_PRODUCT = "products/update"
+    const val UPDATE_ORDER = "orders/update"
 
 }

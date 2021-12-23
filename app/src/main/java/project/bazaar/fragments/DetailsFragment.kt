@@ -5,30 +5,45 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.TextViewCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 import project.bazaar.R
+import project.bazaar.model.Product
+import project.bazaar.model.ProductDetailData
+import project.bazaar.model.userData
+import project.bazaar.repository.Repository
+import project.bazaar.viewmodels.DetailFragmentViewModel
+import project.bazaar.viewmodels.DetailFragmentViewModelFactory
+import project.bazaar.viewmodels.ProfileViewModel
+import project.bazaar.viewmodels.ProfileViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DetailsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var product: Product
+    private lateinit var productDetailChangeButton : Button
+    private lateinit var title : TextInputEditText
+    private lateinit var seller : TextView
+    private lateinit var is_active : TextView
+    private lateinit var price : TextInputEditText
+    private lateinit var priceType : TextInputEditText
+    private lateinit var amountType : TextInputEditText
+    private lateinit var description : TextInputEditText
+    private lateinit var detailFragmentViewModel: DetailFragmentViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        val factory = DetailFragmentViewModelFactory(this.requireContext(), Repository())
+        detailFragmentViewModel = ViewModelProvider(this, factory).get(DetailFragmentViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -42,28 +57,89 @@ class DetailsFragment : Fragment() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
         //actionBar?.setLogo(R.drawable.ic_bazaar_logo_coloured)
         actionBar?.setDisplayUseLogoEnabled(false)
+        val view = inflater.inflate(R.layout.fragment_details, container, false)
+        product = ProductDetailData.getProduct()
+        title = view.findViewById(R.id.detailProductName)
+        seller = view.findViewById(R.id.detailSeller)
+        is_active = view.findViewById(R.id.detailActive)
+        price = view.findViewById(R.id.detailPrice)
+        priceType = view.findViewById(R.id.detailPriceType)
+        amountType = view.findViewById(R.id.detailAmountType)
+        description = view.findViewById(R.id.detailDescription)
+
+        title.setText(product.title)
+        seller.text = product.username
+        price.setText(product.price_per_unit)
+        var isActiveVariable : Boolean
+        if(product.is_active)
+        {
+            is_active.text = "Active"
+            isActiveVariable = true
+            is_active.setTextColor(resources.getColor(R.color.turqoise))
+        }
+        else
+        {
+            isActiveVariable = false
+            is_active.text = "Inactive"
+            is_active.setTextColor(resources.getColor(R.color.dark_hintColorGray))
+        }
+        priceType.setText(product.price_type)
+        amountType.setText(product.amount_type)
+        description.setText(product.description)
+
+
+        productDetailChangeButton = view.findViewById(R.id.productDetailChangeButton)
+        if(userData.getUsername().removeSurrounding("\"") == product.username.removeSurrounding("\""))
+        {
+            productDetailChangeButton.visibility = View.VISIBLE
+
+
+        }
+        else
+        {
+            productDetailChangeButton.visibility = View.GONE
+            seller.isEnabled = false
+            title.isEnabled = false
+            price.isEnabled = false
+            priceType.isEnabled = false
+            amountType.isEnabled = false
+            description.isEnabled = false
+        }
 
         actionBar?.show()
-        return inflater.inflate(R.layout.fragment_details, container, false)
+        productDetailChangeButton.setOnClickListener {
+
+            detailFragmentViewModel.product.value.let {
+                if(it != null)
+                {
+                    it.rating = product.rating
+                    it.amount_type = amountType.text.toString()
+                    it.price_type = priceType.text.toString()
+                    it.product_id = product.product_id
+                    it.username = product.username
+                    it.is_active = isActiveVariable
+                    it.price_per_unit = price.text.toString()
+                    it.units = product.units
+                    it.description = product.description
+                    it.title = title.text.toString()
+                }
+
+            }
+
+            lifecycleScope.launch {
+                val isSuccessful = detailFragmentViewModel.updateProduct()
+                if(isSuccessful)
+                {
+
+                }
+
+
+
+            }
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }

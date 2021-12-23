@@ -62,6 +62,7 @@ class MyFaresFragment : Fragment() {
                 0 ->{
                     tab.text="Ongoing Sales"
 
+
                 }
                 1 ->
                 {

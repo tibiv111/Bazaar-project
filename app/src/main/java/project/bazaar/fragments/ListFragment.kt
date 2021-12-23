@@ -24,9 +24,13 @@ import android.view.*
 import android.widget.Filterable
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.launch
 import project.bazaar.model.userData
+import project.bazaar.model.ProductDetailData
 import kotlin.properties.Delegates
 
 
@@ -44,7 +48,7 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = ListViewModelFactory(Repository())
+        val factory = ListViewModelFactory(this.requireContext(), Repository())
         listViewModel = ViewModelProvider(this, factory).get(ListViewModel::class.java)
         firstResume = true
     }
@@ -127,6 +131,7 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
     override fun onItemClick(position: Int) {
         Log.d("xxx", "Item $position was clicked")
         val clickedItem = listViewModel.products.value!![position]
+        ProductDetailData.changeWholeProduct(clickedItem)
         findNavController().navigate(R.id.detailsFragment)
     }
 
@@ -139,11 +144,20 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
         }
         else
         {
-            val isSuccessful = listViewModel.addOrder(title = clickedItem.title, description = clickedItem.description,
-                price_per_unit = clickedItem.price_per_unit, units = clickedItem.units, owner_username = clickedItem.username )
+            lifecycleScope.launch {
+                val msg = listViewModel.addOrder(
+                    title = clickedItem.title,
+                    description = clickedItem.description,
+                    price_per_unit = clickedItem.price_per_unit,
+                    units = clickedItem.units,
+                    owner_username = clickedItem.username
+                )
 
 
-            Toast.makeText(this.context, "Order added successfully", Toast.LENGTH_SHORT).show()
+            }
+
+
+
 
 
 
@@ -156,7 +170,6 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
     }
 
     override fun onItemLongClick(position: Int) {
-//        TODO("Not yet implemented")
     }
 
     override fun onResume() {

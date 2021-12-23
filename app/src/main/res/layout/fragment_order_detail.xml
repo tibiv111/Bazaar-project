@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/B_white"
+    tools:context=".fragments.OrderDetailFragment">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/orderDetailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="300dp"
+
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="Title"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toTopOf="@+id/guideline9" />
+
+
+    <Spinner
+        android:id="@+id/appCompatSpinner"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/orderDetailTitle"
+        app:layout_constraintTop_toBottomOf="@+id/orderDetailTitle" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/orderDetailPriceAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:maxWidth="300dp"
+
+        android:text="Price / Amount"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/appCompatSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatSpinner" />
+
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/orderDetailTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Total price"
+        android:maxWidth="300dp"
+
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/orderDetailPriceAmount"
+        app:layout_constraintTop_toBottomOf="@+id/orderDetailPriceAmount" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/orderDetailDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:maxWidth="300dp"
+        android:text="Description"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/orderDetailTotalPrice"
+        app:layout_constraintTop_toBottomOf="@+id/orderDetailTotalPrice" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/orderDetailChangeButton"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/turqoise"
+        android:text="@string/change_data_btn"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@+id/orderDetailDescription" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="90dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
